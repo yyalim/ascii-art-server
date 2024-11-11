@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",                  // Specify ECMAScript target version
+    "module": "commonjs",              // Node.js uses CommonJS modules
+    "strict": true,                    // Enable strict type checking
+    "esModuleInterop": true,           // Allow import/export compatibility with CommonJS
+    "skipLibCheck": true,              // Skip type checking of declaration files
+    "outDir": "./dist",                // Directory for compiled JS files
+    "baseUrl": "./src",                // Base directory for module resolution
+    "types": ["node"]                  // Include type definitions for Node
+  },
+  "include": ["src/**/*.ts"],          // Files to be compiled
+  "exclude": ["node_modules", "dist"]  // Exclude unnecessary folders
+}
