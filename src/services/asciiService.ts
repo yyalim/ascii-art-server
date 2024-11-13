@@ -1,5 +1,6 @@
 import { WebSocket } from 'ws';
-import { AsciiArt } from '../types/asciiArt';
+import { AsciiArt } from '../types/AsciiArt';
+import { AsciiMessage } from '../types/AsciiMessage';
 
 const asciiArts: Map<string, AsciiArt> = new Map();
 
@@ -26,7 +27,8 @@ export function streamAsciiArt(ws: WebSocket, fileId: string) {
   const interval = setInterval(() => {
     if (lineIndex < lines.length) {
       const percentage = ((lineIndex + 1) / lines.length) * 100;
-      ws.send(JSON.stringify({ line: lines[lineIndex++], percentage }));
+      const message: AsciiMessage = { line: lines[lineIndex++], percentage };
+      ws.send(JSON.stringify(message));
     } else {
       ws.close(1000, 'Transmission complete');
       clearInterval(interval);
